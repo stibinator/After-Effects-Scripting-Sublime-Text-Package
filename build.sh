@@ -1,17 +1,17 @@
 # Renaming argument
-file_name=$1;
+current_file=$1;
 
 # Your CS version
 version="CS6";
 
-# Adobe After Effects folder location
-base_path="Applications";
-
 # Full path
-full_path="/${base_path}/Adobe After Effects ${version}/Scripts";
+full_path="/Applications/Adobe After Effects ${version}/Scripts/${current_file%.*}.jsx";
+
 
 # Copying built file to script folder
-cp $file_name "${full_path}/${file_name%.*}.jsx";
+cp $current_file "${full_path}";
+
+file_compiled=$(sed -i.bak "s/#include \"\(.*\)\";/$(cat \1)/g" "${full_path}")
 
 # Printing happy feedback in the console
-echo "Successfully compiled ${file_name} to ${full_path}/${file_name%.*}.jsx";
+echo "Successfully compiled ${current_file} to ${full_path}";
