@@ -5,7 +5,8 @@
   "shell": true,
   "windows": 
   {
-    "cmd": ["cd ${packages}\\AfterEffects\\ && build.bat $file_name $file_path"],
-    "encoding": "cp850"
+    "cmd": ["build.bat", "$file_name", "$file_path"],
+	"encoding": "cp850",
+	"working_dir": "${packages}\\After-Effects-Scripting-Sublime-Text-Package\\"
   }
 }
